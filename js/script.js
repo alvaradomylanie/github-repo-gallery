@@ -1,6 +1,7 @@
 //About Me
 const overview = document.querySelector(".overview");
 const username = "alvaradomylanie"
+const listRepo = document.querySelector(".list-repo");
 
 const gitUserInfo = async function () {
     const userInfo = await fetch(`https://api.github.com/users/${username}`);   
@@ -25,5 +26,24 @@ const displayUserInfo = function (data) {
     </div>    
 `;
 overview.append(div);
+gitRepos();
 };
+
+
+ async function listRepo() {
+    const fetchRepos = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page100`);
+    const repoData = await fetchRepos.json();
+    displayRepos(repoData);
+}
+
+const placeholder = function (repos) {
+    for (const repo of repos) {
+        const repo1 = document.createElement("li");
+    }   repo1.classList.add("repo");
+        repo1.innerHTML = `<h3>${repo.name}</h3>`;
+        listRepo.append(repo1);
+    }
+
+
+
 
