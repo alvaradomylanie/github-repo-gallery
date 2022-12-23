@@ -16,7 +16,7 @@ const displayUserInfo = function (data) {
     div.classList.add("user-info");
     div.innerHTML = `
     <figure>
-        <img alt="user avatar" src=${data.avatar_url} />
+        <img alt="user avatar" src=${data.avatar_url}/>
     </figure>
     <div>
         <p><strong>Name:</strong> ${data.name}</p>
@@ -30,19 +30,22 @@ gitRepos();
 };
 
 
- async function listRepo() {
-    const fetchRepos = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page100`);
+ const gitRepos = async function () {
+    const fetchRepos = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`);
     const repoData = await fetchRepos.json();
     displayRepos(repoData);
 }
 
-const placeholder = function (repos) {
+const displayRepos = function (repos) {
     for (const repo of repos) {
         const repo1 = document.createElement("li");
-    }   repo1.classList.add("repo");
-        repo1.innerHTML = `<h3>${repo.name}</h3>`;
-        listRepo.append(repo1);
+    repos.classList.add("repo");
+    repos.innerHTML = `<h3>${repos.name}</h3>`;
+    repos.append(repoItem);
     }
+};
+
+
 
 
 
