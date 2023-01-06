@@ -1,7 +1,7 @@
 //About Me
 const overview = document.querySelector(".overview");
 const username = "alvaradomylanie"
-const repoList = document.querySelector(".list-repo");
+const repoList = document.querySelector(".repo-list");
 const allReposContainer = document.querySelector(".repos");
 const repoData = document.querySelector(".repo-data");
 const viewReposButton = document.querySelector(".view-repos");
@@ -45,7 +45,7 @@ const displayRepos = function (repos) {
     for (const repo of repos) {
         const repoItem = document.createElement("li");
     repoItem.classList.add("repo");
-    repoItem.innerHTML = `<h3>${repos.name}</h3>`;
+    repoItem.innerHTML = `<h3>${repo.name}</h3>`;
     repoList.append(repoItem);
     }
 };
